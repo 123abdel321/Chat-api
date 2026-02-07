@@ -39,7 +39,7 @@ class ChatController extends Controller
             $user = $request->user();
         
             $chats = $user->chats()
-                ->with(['latestMessage', 'participants'])
+                ->with(['latestMessage.user', 'participants'])
                 ->orderByDesc(function ($query) {
                     $query->select('created_at')
                         ->from('messages')
